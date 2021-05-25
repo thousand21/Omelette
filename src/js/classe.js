@@ -61,7 +61,8 @@ class Poele extends Outil{
         this.contenu=contenu;
         this.cuire=(plat)=>{
             plat.etat="cuit";
-            console.log(`Votre ${plat.nom} est cuite ! Bonne degustation !`);
+            
+            setTimeout(function(){ console.log(`Votre ${plat.nom} est cuite ! Bonne degustation !`); }, 4000);;
         }
     }
 }
