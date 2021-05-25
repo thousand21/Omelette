@@ -10,10 +10,12 @@ class Personne{
             console.log(`${this.nom} est actuellement a la ${lieu.nom}`)
         }
         this.payerArticle=(article)=>{
-
+            this.argent-=article.prix;
+            console.log(`${this.nom} achete ${article.nom}`);
         }
         this.couper=(ingredient,outil)=>{
-
+            ingredient.etat="coupe";
+            outil.action="coupe";
         }
     }
 }
@@ -37,6 +39,12 @@ class Outil{
         this.action=action;
     }
 }
+class Panier{
+    constructor(type,contenu){
+        this.type=type;
+        this.contenu=contenu;
+    }
+}
 
 class Produits{
     constructor(nom,etat,prix){
@@ -46,12 +54,14 @@ class Produits{
     }
 }
 
+
 class Poele extends Outil{
     constructor(nom,action,contenu){
         super(nom,action);
         this.contenu=contenu;
-        this.cuire=()=>{
-
+        this.cuire=(plat)=>{
+            plat.etat="cuit";
+            console.log(`Votre ${plat.nom} est cuite ! Bonne degustation !`);
         }
     }
 }
@@ -61,8 +71,10 @@ class Bol extends Outil{
         super(nom,action);
         this.contenu=contenu;
         this.melanger=(nomMelange)=>{
-
+            let newMelange= new Produits(nomMelange,"pascuit",10);
+            console.log(`il melange le tout et obtient ${newMelange.nom}`);
+            return newMelange;
         }
     }
 }
-export {Personne,Lieu,Epicerie,Outil,Produits,Poele,Bol,}
+export {Personne,Lieu,Epicerie,Outil,Panier,Produits,Poele,Bol,}
