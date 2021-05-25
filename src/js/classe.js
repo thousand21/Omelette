@@ -6,7 +6,8 @@ class Personne{
         this.mainDroite=mainGauche;
         this.mainGauche=mainGauche;
         this.seDeplacer=(lieu)=>{
-
+            lieu.personnes.push(this);
+            console.log(`${this.nom} est actuellement a la ${lieu.nom}`)
         }
         this.payerArticle=(article)=>{
 
@@ -21,6 +22,12 @@ class Lieu{
     constructor(nom,personnes){
         this.nom=nom;
         this.personnes=personnes;
+    }
+}
+class Epicerie extends Lieu{
+    constructor(nom,personnes,panier){
+        super(nom,personnes);
+        this.panier=panier;
     }
 }
 
@@ -58,3 +65,4 @@ class Bol extends Outil{
         }
     }
 }
+export {Personne,Lieu,Epicerie,Outil,Produits,Poele,Bol,}
